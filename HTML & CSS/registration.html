@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>registration form</title>
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1 class="ram">registration form</h1>
+    <form action="/submit-registration-form" method="get">
+        <label>First Name</label><br>
+        <input type="text" id="name" placeholder="enter your first name" required min="3"><br>
+        <label>Last Name</label><br>
+        <input type="text" id="first" placeholder="enter your Last name"><br>
+        <label>DOB</label><br>
+        <input type="date" id="dob" placeholder="enter your dob" required><br>
+        <label>Gender</label><br>
+        <label>
+        <input type="radio" id="gender" value="male" required>male</label><br>
+        <label>
+            <input type="radio" id="gender" value="female" required>female
+        </label><br>
+        <label>email</label><br>
+        <input type="text" id="email" placeholder="enter your email"><br>
+        <label>cities</label>
+        <select id="cities" name="cities" required>
+        <option value="select a city">select a city </option>
+        <option value="chennai">Chennai</option>
+        <option value="coimbatore">Coimbatore</option>
+        <option value="namakkal">Namakkal</option>
+        <option value="salem">Salem</option>
+        <option value="trippur">Trippur</option>
+        </select><br>
+        <label>Address</label><br>
+        <textarea name="address" placeholder="enter your address" required></textarea><br>
+        <label>Pincode</label><br>
+        <input type="text" placeholder="pincode" required minlength="6" maxlength="6"><br>
+        <label>mobile no.</label><br>
+        <input type="text" placeholder="your phone number" required minlength="10" maxlength="10"><br>
+        <label>preferred time for contacting</label><br>
+        <label aria-placeholder="select">
+            <input type="checkbox" name="contacting" value="morning">morning
+
+        </label>
+        <label>
+            <input type="checkbox" name="contacting" value="afternoon">afternoon
+        </label>
+        <label>
+            <input type="checkbox" name="contacting" value="evening">evening
+        </label>
+        <button type="submit" style="background-color: green; color: white; border-radius: 5px;">Submit</button>
+
+    </form>
+</body>
+
+</html>
