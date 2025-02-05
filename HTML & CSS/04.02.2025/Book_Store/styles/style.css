@@ -1,0 +1,136 @@
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.bg{
+
+    background-color: rgb(193, 231, 231);
+    height: 100%;
+}
+html,body{
+    overflow: hidden;
+    height: 100%;
+}
+.scroll{
+    overflow: hidden;
+    height: 100%;
+}
+header {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+header nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+header nav ul li {
+    display: inline;
+    margin: 0 10px;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: underline;
+}
+
+.image{
+    object-fit: contain;
+}
+
+
+
+
+main {
+    padding: 32px;
+    text-align: center;
+    font-family: cursive;
+}
+
+.mandatory {
+    position: absolute;
+    top: 10px;
+    right: 30px;
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Space between items */
+}
+
+/* Styling the icons */
+.mandatory .icon {
+    width: 20px; /* Adjust icon size */
+    height: 20px;
+}
+
+/* Contact text */
+.mandatory span {
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+}
+.linear{
+    background: linear-gradient(to right,#333,#f4f4f4);
+    padding: 10px;
+}
+
+
+.contact-form {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form .form-group {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.contact-form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #8a3333;
+    border-radius: 4px;
+}
+
+.contact-form button {
+    background-color: #47e92a;
+    color: rgb(22, 22, 22);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+
+
+
+
+footer {
+    background-color: #0b0b0b;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    width: 100%;
+    height: 50px;
+    position: fixed;
+    bottom: 0; 
+    left: 0;
+    box-sizing: border-box;  
+}
