@@ -1,0 +1,22 @@
+<html>
+    <body>
+        <script>
+            let year=2003;
+            let month="november";
+            function isLeapYear(year){
+                return(year%4==0 && year%100!=0)||(year%4==0);
+            }
+            if(isLeapYear(year)){
+                if(month=="february"){
+                    console.log("The year is leap year and the month is February with 29 days.");
+                }else{
+                    console.log("The year is leap year and the month is not February");
+                }
+            }
+                else{
+                    console.log("The given year is not a leap year");
+                }
+            
+        </script>
+    </body>
+</html>

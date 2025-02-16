@@ -1,0 +1,26 @@
+<html>
+    <body>
+        <script>
+            let number1 = 7;
+            let number2 = 20;
+
+            
+            let number3 = number2 + 40;
+
+            
+            if ( number1 <= 0 || number2 <= 0) {
+                console.log("Invalid input! Please enter positive numbers.");
+            } else {
+                console.log(" Multiples of " + number1 + " from " + number2 +" to " + number3 +":");
+
+                let i = number2; 
+                while (i <= number3) {
+                    if (i % number1 === 0) { 
+                        console.log(i);
+                    }
+                    i++; 
+                }
+            }
+        </script>
+    </body>
+</html>

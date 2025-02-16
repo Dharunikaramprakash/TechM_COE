@@ -1,0 +1,20 @@
+<html>
+    <body>
+        <h2>Confirm Box Task</h2>
+        <p>are you planning to go for a movie today???????</p>
+        <button onclick="Confirmbox()">Confirm</button>
+        
+        <p id="Confirm"></p>
+        <script>
+            var txt;
+            function Confirmbox(){
+              if(confirm("Are you going to the movie today!!!")){
+                txt="user is going to movie today";
+              }else{
+                txt="user is not going for the movie today";
+              }
+              document.getElementById("Confirm").innerHTML=txt;
+            }   
+                 </script>
+    </body>
+</html>

@@ -1,0 +1,20 @@
+<html>
+    <body>
+        <h1>prompt box task!!</h1>
+        <p>this example is to  display the age of the user </p>
+        <button onclick="Prompttask()">Click Here!!</button>
+        <p id="Prompt"></p>
+        <script>
+            let txt;
+            function Prompttask(){
+            let age=prompt("enter your age");
+            if(age==null||age==""){
+                txt="user is not willing to disclose their age";
+            }else{
+                txt="the user's age is "+age;
+            }
+            document.getElementById("Prompt").innerHTML=txt;
+        }
+        </script>
+    </body>
+</html>

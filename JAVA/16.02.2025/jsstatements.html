@@ -1,0 +1,109 @@
+<html>
+    <body>
+        <script>
+console.log("--------if statement---------");
+
+const num = 5;
+
+if (num > 0) {
+	console.log("The number is positive.");
+};
+console.log("---------------if else statement----------------");
+let a = -10;
+
+if (a > 0)
+	console.log("The number is positive.");
+else
+	console.log("The number is negative");
+
+
+console.log("-----------------nested if else statement---------------");
+let weather = "sunny";
+let temperature = 25;
+
+if (weather === "sunny") {
+    if (temperature > 30) {
+        console.log("It's a hot day!");
+    } else if (temperature > 20) {
+        console.log("It's a warm day.");
+    } else {
+        console.log("It's a bit cool today.");
+    }
+} else if (weather === "rainy") {
+    console.log("Don't forget your umbrella!");
+} else {
+    console.log("Check the weather forecast!");
+};
+console.log("---------------if else if statement--------------------");
+const temp = 25;
+if (temp > 30) {
+    console.log("It's hot.");
+} else if (temp >= 20) {
+    console.log("It's warm.");
+} else {
+    console.log("It's cold.");
+}
+console.log("-----------------switch statement----------------------");
+let m = 5;
+
+switch (m) {
+	case 0:
+		console.log("Number is zero.");
+		break;
+	case 1:
+		console.log("Nuber is one.");
+		break;
+	case 2:
+		console.log("Number is two.");
+		break;
+	default:
+		console.log("Number is greater than 2.");
+};
+console.log("----------------------ternary operator-------------------");
+let u = 10;
+
+let result = u >= 0 ? "Positive" : "Negative";
+
+console.log(`The number is ${result}.`);
+
+console.log("----------------------for loop------------------------");
+
+for (let i = 21; i <= 40; i++) {
+  if (i % 2 === 0) {
+    console.log(i);
+  }
+};
+console.log("----------------------------while loop------------------------");
+let h = 11;
+while (h <= 15) {
+    console.log(h);
+    h++;
+}
+
+console.log("----------------------do while loop----------------------------------");
+let n = 21;
+do {
+    if(n%4==0)
+    console.log(n);
+    n++;
+} while (n <= 35);
+
+console.log("-----------------------------return statement---------------------------------");
+function add(a, b) {
+    return a + b;
+}
+const res = add(55, 63);
+console.log(res);
+console.log("------------------------------break and continue----------------------------");
+for (let i = 1; i <= 5; i++) {
+    if (i === 3) break;
+    console.log(i);
+}
+
+for (let i = 1; i <= 5; i++) {
+    if (i === 3) continue;
+    console.log(i);
+}
+</script>
+</body>
+</html>
