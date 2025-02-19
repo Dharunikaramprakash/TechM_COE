@@ -1,0 +1,52 @@
+<html>
+    <body>
+        <script>
+            const student={
+                id:"2021pitit118",
+                name:"dharun",
+                dept:"IT",
+                college:"Kongu Engineering college",
+                email:"dharun@gmail.com"
+
+            };
+            console.log("display student details***************************");
+            function display(){
+                console.log("ID: "+student.id);
+                console.log("name: "+student.name);
+                console.log("dept: "+student.dept);
+                console.log("college: "+student.college);
+                console.log("email: "+student.email);
+            }
+            display();
+            console.log("display specific details***************************");
+            function display1(){
+                console.log("ID: "+student.id);
+                console.log("name: "+student.name);
+                console.log("Email: "+student.email);
+
+            }
+            display1();
+            console.log("display with address***************************");
+            student.address={
+                doorNo:201,
+                street:"kudi street",
+                area:"Irukkur",
+                pincode:637204,
+
+            };
+            function display2(){
+                display();
+                console.log("door no. : "+student.address.doorNo);
+                console.log("street: "+student["address"]["street"]);
+                console.log("area: "+student.address["area"]);
+                console.log("pincode: "+student.address.pincode);
+            }
+            display2();
+            delete student.email;
+            delete display1;
+            console.log("after deleting email******************************");
+            display();
+
+        </script>
+    </body>
+</html>

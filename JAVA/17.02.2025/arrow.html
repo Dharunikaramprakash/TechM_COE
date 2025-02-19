@@ -1,0 +1,48 @@
+<html>
+    <body>
+        <script>
+            let arrowOperation=()=>{
+                let num1=parseInt(prompt("enter num1:"));
+                let num2=parseInt(prompt("enter num2:"));
+                let operation=prompt("enter an operation to perform: ");
+                var add=function(a,b){
+                    console.log(a+b);
+                }
+                var subtract=function(a,b){
+                    console.log(a-b);
+                }
+                var multiply=function(a,b){
+                    console.log(a*b);
+                    
+                }
+                var divide=function(a,b){
+                    if(b==0){
+                        console.log("cannot divide by zero");
+                    }
+                    else{
+                        console.log(a/b);
+                    }
+                }
+                switch(operation.toLowerCase()){
+                    case "add":
+                        add(num1,num2);
+                        break;
+                    case "subtract":
+                        subtract(num1,num2);
+                        break;
+                    case "multiply":
+                        multiply(num1,num2);
+                        break;
+                    case "divide": 
+                        divide(num1,num2);
+                        break;
+                    default:
+                        console.log("enter valid input");
+                        break;    
+
+                }
+            }
+            arrowOperation();
+        </script>
+    </body>
+</html>

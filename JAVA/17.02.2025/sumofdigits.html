@@ -1,0 +1,22 @@
+<html>
+    <body>
+        <script>
+            
+            function sumofdigits(num){
+                let sum=0;
+                while(num>0){
+                    sum=sum+(num%10);
+                    num=Math.floor(num/10);
+                    
+                }console.log(sum);
+                if(sum%2==0){
+                    console.log("it is a even number");
+                }else{
+                    console.log("it is odd number");
+
+                }
+            }
+            sumofdigits(12346);
+        </script>
+    </body>
+</html>
