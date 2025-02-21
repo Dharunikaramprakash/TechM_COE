@@ -1,0 +1,90 @@
+index.html
+-------------
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+  <h1>A Simple Servlet</h1> 
+  <p>This is a static webpage.</p>
+  <p>Now try the  <a href="count">Counter servlet</a></p> 
+  <p>Here is a <a href="jspcount"> simple JSP (Java Servlet Page)</a></p>
+  </body>
+</html>
+----------------------------------------------------------------------------------------------------------
+Counter.java
+-------------
+package pack7;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
+
+/**
+ * Servlet implementation class Counter
+ */
+@WebServlet("/count")
+public class Counter extends HttpServlet {
+    int accesses = 0;
+
+    public void doGet(HttpServletRequest request, HttpServletResponse response)
+         throws IOException, ServletException
+    {
+        response.setContentType("text/html");
+        PrintWriter out = response.getWriter();
+
+        accesses++;
+        out.print("Number of times this servlet has been accessed:" + accesses);
+    }
+}
+------------------------------------------------------------------------------------------------------------
+jspcount.jsp
+--------------
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>JSP Page!</title>
+</head>
+<body>
+<%!
+ public static int accesses = 0;
+%>
+<h1>JSP Example (jspcount.jsp)</h1>
+<%
+  accesses++;
+  out.print("<p>Number of times this JSP has been accessed:" + accesses + "</p>");
+%>
+</body>
+</html>
+--------------------------------------------------------------------------------------------------------------------------
+web.xml
+----------
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://jakarta.ee/xml/ns/jakartaee" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd" id="WebApp_ID" version="6.0">
+  <display-name>thirdday</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+  </welcome-file-list>
+  <servlet>
+   <servlet-name>jspcount.jsp</servlet-name>
+   <jsp-file>/jspcount.jsp</jsp-file>
+   </servlet>
+   <servlet-mapping>
+   <servlet-name>jspcount.jsp</servlet-name>
+   <url-pattern>/jspcount/*</url-pattern>
+   </servlet-mapping>
+</web-app>
