@@ -1,0 +1,43 @@
+ServletRedirect.java
+--------------------
+package pack3;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
+@WebServlet("/ServletRedirect")
+public class ServletRedirect extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+   
+    public ServletRedirect() {
+        super();
+   
+    }
+    	@Override
+    	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException { 
+
+    		resp.sendRedirect("https://www.geeksforgeeks.org/url-rewriting-using-java-servlet/"); 	
+    		} 
+    	}
+
+______________________________________________________________________________________________________________________________________________________________________________________________
+
+index.html
+---------
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<form action="ServletRedirect" method="get"> 
+        <h2>sendRedirect() method in Java Servlets</h2>           
+<p> endRedirect() method, redirects the client request from the one servlet to another servlet.  </p>   
+        For More information <input type="submit" value="Click Here">   </form>
+</body>
+</html>

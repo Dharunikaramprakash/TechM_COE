@@ -1,0 +1,120 @@
+InitParamExample.java
+---------------------
+package pack4;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.ServletConfig;
+import java.io.IOException;
+import java.io.PrintWriter;
+
+public class InitParamExample extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+   
+    public InitParamExample() {
+        super();
+    }
+
+    protected void doGet(HttpServletRequest request, 
+            HttpServletResponse response)
+                  throws ServletException, IOException {
+        response.setContentType("text/html");
+    PrintWriter out = response.getWriter();      
+            ServletConfig config=getServletConfig();        
+            String address = config.getInitParameter("address");
+    	String email = config.getInitParameter("email");
+    	String phone = config.getInitParameter("phone");
+    out.print("Address: " + address + "\n");
+    	out.print("Email: " + email + "\n");
+    	out.print("Phone: " + phone + "");
+            
+            out.close();     
+     }
+
+}
+
+______________________________________________________________________________________________________________________________________________________________________________________________
+
+MyServlet.java
+--------------
+package pack4;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.ServletConfig;
+import jakarta.servlet.annotation.WebInitParam;
+import java.io.IOException;
+import java.io.PrintWriter;
+
+
+@WebServlet(
+	    urlPatterns = "/config",
+	    initParams = {
+		@WebInitParam(name = "address", value = "Chennai"),
+	        @WebInitParam(name = "email", value = "abcd@gmail.com"),
+	        @WebInitParam(name = "phone", value = "9384564715")
+	    }
+	)
+	public class MyServlet extends HttpServlet {
+
+	private static final long serialVersionUID = 1L;
+		private String email;
+	    private String phone;
+	    private String address;
+
+	    @Override
+	    public void init(ServletConfig config) throws ServletException {
+	    	super.init(config);
+	    	address = config.getInitParameter("address");
+	        email = config.getInitParameter("email");
+	        phone = config.getInitParameter("phone");
+	    }
+	    
+	@Override
+	    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	        resp.setContentType("text/html");
+	        PrintWriter out = resp.getWriter();
+	        out.println("<html><body>");
+	        out.println("<h1>ServletConfig Example</h1>");
+	        out.println("<p>Address: " + address + "</p>"); 
+	        out.println("<p>Email: " + email + "</p>");        
+	        out.println("<p>Phone: " + phone + "</p>"); 
+	        out.println("</body></html>");out.close();
+		}
+	}
+
+______________________________________________________________________________________________________________________________________________________________________________________________
+
+web.xml
+-------
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://jakarta.ee/xml/ns/jakartaee" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd" id="WebApp_ID" version="6.0">
+  <display-name>WebApplication</display-name>
+ 
+<servlet>
+    <servlet-name>InitParamExample</servlet-name>
+    <servlet-class>example1.InitParamExample</servlet-class>
+    <init-param>
+        <param-name>address</param-name>
+        <param-value>Chennai</param-value>
+    </init-param>
+    <init-param>
+        <param-name>email</param-name>
+        <param-value>abcd@gmail.com</param-value>
+    </init-param>
+    <init-param>
+        <param-name>phone</param-name>
+        <param-value>9384564715</param-value>
+    </init-param>
+</servlet>
+<servlet-mapping>
+    <servlet-name>InitParamExample</servlet-name>
+    <url-pattern>/InitParamExample</url-pattern>
+</servlet-mapping>
+
+</web-app>

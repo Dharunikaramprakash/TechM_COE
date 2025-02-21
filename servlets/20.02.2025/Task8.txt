@@ -1,0 +1,76 @@
+First.java
+----------
+package packk6;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
+@WebServlet("/validate")
+public class First extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+ 
+    public First() {
+        super();
+    }
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        
+        String user = request.getParameter("user");
+        response.sendRedirect("Second?user=" + user);
+    }
+}
+
+______________________________________________________________________________________________________________________________________________________________________________________________
+
+Second.java
+----------
+package pack6;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
+
+@WebServlet("/Second")
+public class Second extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+ 
+    public Second() {
+        super();
+    }
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        PrintWriter out = response.getWriter();
+
+        String user = request.getParameter("user");
+        out.println("Welcome "+user);    
+    }
+}
+
+______________________________________________________________________________________________________________________________________________________________________________________________
+
+f1.html
+--------
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Hidden form field</title>
+</head>
+<body>
+<form method="post" action="validate">
+  Name:<input type="text" name="user" /><br/>
+  Password:<input type="text" name="pass" ><br/>
+  <input type="submit" value="submit">
+</form>
+</body>
+</html>

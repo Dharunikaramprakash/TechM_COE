@@ -1,0 +1,108 @@
+GetUrlParameterServlet.java
+---------------------------
+package pack6;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
+
+@WebServlet("/GetUrlParameterServlet")
+public class GetUrlParameterServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+	
+    public GetUrlParameterServlet() {
+        super();
+    }
+
+    protected void doGet(HttpServletRequest request, 
+         HttpServletResponse response)
+                  throws ServletException, IOException {
+    	response.setContentType("text/html"); 
+        PrintWriter out = response.getWriter();
+
+        String userName = request.getParameter("userName").trim();
+        String password = request.getParameter("password").trim();
+        
+        out.println("Username: " + userName + " ");
+        out.println("Password: " + password);       
+        out.close();    
+     }
+}
+
+______________________________________________________________________________________________________________________________________________________________________________________________
+
+SetUrlParameterServlet.java
+---------------------------
+package pack6;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.RequestDispatcher;
+import java.io.IOException;
+import java.io.PrintWriter;
+
+@WebServlet("/SetUrlParameterServlet")
+public class SetUrlParameterServlet extends HttpServlet {
+    private static final long serialVersionUID = 1L;
+
+    public SetUrlParameterServlet() {
+        super();
+    }
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html");
+        PrintWriter out = response.getWriter();
+
+        String userName = request.getParameter("userName");
+        String password = request.getParameter("password");
+
+        if (userName != null) userName = userName.trim();
+   
+        if (userName == null || userName.isEmpty() || password == null || password.isEmpty()) {
+            out.print("Please enter both username and password. <br><br>");
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/eight.html");
+            requestDispatcher.include(request, response);
+        } 
+
+        else if (userName.equals("aia") && password.equals("435465")) {
+            out.println("Logged in successfully.<br>");
+            out.println("Click on the below link to see the values of Username and Password.<br>");
+            out.println("<a href='GetUrlParameterServlet?userName=" + userName + "&password=" + password + "'>Click here</a>");
+        } 
+
+        else {
+            out.print("Wrong username or password. <br><br>");
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/eight.html");
+            requestDispatcher.include(request, response);
+        }
+    }
+}
+
+______________________________________________________________________________________________________________________________________________________________________________________________
+
+loginfile.html
+----------
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>UrlParameterServlet</title>
+</head>
+<body>
+   <form action="SetUrlParameterServlet" method="post">
+        Username:<input type="text" name="userName">
+        <br><br>
+        Password:<input type="password" name="password">
+        <br><br> 
+        <input type="submit" value="login"> 
+    </form>
+</body>
+</html>
+

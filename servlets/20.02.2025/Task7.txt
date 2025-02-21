@@ -1,0 +1,168 @@
+CreateCookieServlet.java
+------------------------
+package pack6;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.RequestDispatcher;
+import java.io.IOException;
+import java.io.PrintWriter;
+
+@WebServlet("/CreateCookieServlet")
+public class CreateCookieServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    public CreateCookieServlet() {
+        super();
+    }
+    protected void doPost(HttpServletRequest request, 
+    	      HttpServletResponse response)
+    	                 throws ServletException, IOException {
+    	    response.setContentType("text/html"); 
+    	        PrintWriter out = response.getWriter();
+
+    	        String userName = request.getParameter("userName").trim();
+    	        String password = request.getParameter("password").trim();
+    	       
+    	        if(userName == null || userName.equals("") || 
+    	                password == null || password.equals("")){
+    	            out.print("Please enter both username " +
+    	                    "and password. <br><br>");
+    	RequestDispatcher requestDispatcher = 
+    	                request.getRequestDispatcher("/login.html");
+    	            requestDispatcher.include(request, response);
+    	        }
+    	        else if(userName.equals("jai") && password.equals("1234")){
+    	            Cookie cookie1 = new Cookie("userName",userName);
+    	            Cookie cookie2 = new Cookie("password",password);
+    	            response.addCookie(cookie1);
+    	            response.addCookie(cookie2);
+    	            out.print("<h3>Cookies are created. Click on the " +
+    	                    "below button to get cookies."); 
+    	          out.print("<form action='GetCookieServlet' method='POST'>");
+    	out.print("<input type='submit' value='Get Cookie'>");  
+    	                out.print("</form>");  
+    	                  
+    	                out.close();  
+    	        }else{
+    	            out.print("Wrong username or password. <br><br>");
+    	RequestDispatcher requestDispatcher = 
+    	                request.getRequestDispatcher("/login.html");
+    	            requestDispatcher.include(request, response);
+    	            }
+    	    }
+    }
+______________________________________________________________________________________________________________________________________________________________________________________________
+
+GetCookieServlet.java
+---------------------
+package pack6;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
+
+@WebServlet("/GetCookieServlet")
+public class GetCookieServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+    public GetCookieServlet() {
+        super();
+    }
+
+    protected void doPost(HttpServletRequest request, 
+            HttpServletResponse response)
+                          throws ServletException, IOException {
+        response.setContentType("text/html"); 
+            PrintWriter out = response.getWriter();
+    try{
+               Cookie cookies[] = request.getCookies();
+               for(Cookie cookie : cookies){
+                out.println("Cookie Name: " + cookie.getName());
+                out.println("Cookie Value: " + cookie.getValue());
+                out.println("");
+    out.println("Click on the below button to delete cookies.");
+              out.print("<form action='DeleteCookieServlet' method='POST'>");
+              out.print("<input type='submit' value='Delete Cookies'>");
+              out.print("</form>");
+               }
+              out.close();
+    }
+               catch(Exception e){
+                e.printStackTrace();
+          }
+     
+
+   }
+}
+
+______________________________________________________________________________________________________________________________________________________________________________________________
+
+DeleteCookieServlet.java
+------------------------
+package pack6;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
+
+@WebServlet("/DeleteCookieServlet")
+public class DeleteCookieServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+    public DeleteCookieServlet() {
+        super();
+    }
+    protected void doPost(HttpServletRequest request, 
+    	       HttpServletResponse response)
+    	                    throws ServletException, IOException {
+    	    response.setContentType("text/html"); 
+    	        PrintWriter out = response.getWriter();
+    	try{
+    	            Cookie cookies[] = request.getCookies();
+    	            out.print("Deleted cookie are:");
+    	            for(Cookie cookie : cookies){
+    	               cookie.setMaxAge(0);
+    	               out.println("Cookie name: " + cookie.getName());}
+    	            out.close();  
+    	        }catch(Exception e){
+    	            e.printStackTrace();
+    	            }
+    	}
+    }
+
+______________________________________________________________________________________________________________________________________________________________________________________________
+
+login.html
+---------
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Cookies</title>
+</head>
+<body>
+ <form action="CreateCookieServlet" method="post">
+        Username:<input type="text" name="userName">
+                <br><br>
+        Password:<input type="password" name="password">
+                <br><br> 
+        <input type="submit" value="login"> 
+    </form>
+
+</body>
+</html>

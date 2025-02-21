@@ -1,0 +1,96 @@
+WelcomeServlet.java
+-------------------
+package pack6;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
+
+
+public class WelcomeServlet extends HttpServlet {
+	   private static final long serialVersionUID = 1L;
+	       
+	      protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	        response.setContentType("text/html");  
+	        PrintWriter out = response.getWriter();  
+	          
+	        out.print("<h1>Valid application user.</h1>");  
+	        out.close();     
+	        }
+	      }
+
+______________________________________________________________________________________________________________________________________________________________________________________________
+
+MyFilter.java
+-------------
+package pack6;
+
+import jakarta.servlet.Filter;
+import jakarta.servlet.FilterChain;
+import jakarta.servlet.FilterConfig;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.ServletRequest;
+import jakarta.servlet.ServletResponse;
+import jakarta.servlet.annotation.WebFilter;
+import java.io.IOException;
+import java.io.PrintWriter;
+
+@WebFilter("/WelcomeServlet")
+public class MyFilter implements Filter {
+  
+    private FilterConfig filterConfig;
+    
+    public void init(FilterConfig filterConfig) throws ServletException {
+        this.filterConfig = filterConfig;
+    }
+    public void doFilter(ServletRequest request, ServletResponse response,FilterChain chain) throws IOException, ServletException {
+    	response.setContentType("text/html"); 
+        PrintWriter out = response.getWriter();
+        
+        String appUser = filterConfig.getInitParameter("appUser");
+        if("jai".equals(appUser)){
+            chain.doFilter(request, response);
+        }
+        else {out.print("Invalid application user.");
+        }
+        out.close();
+        }  
+    
+    public void destroy() 
+    { } 
+}
+
+______________________________________________________________________________________________________________________________________________________________________________________________
+
+web.xml
+-------
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://jakarta.ee/xml/ns/jakartaee" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd" id="WebApp_ID" version="6.0">
+  <display-name>WebApplication</display-name>
+
+<servlet>
+    <servlet-name>WelcomeServlet</servlet-name>
+    <servlet-class>example1.WelcomeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>WelcomeServlet</servlet-name>
+    <url-pattern>/example1.WelcomeServlet</url-pattern>
+  </servlet-mapping>
+<filter>  
+      <filter-name>MyFilter</filter-name>  
+      <filter-class>example1.MyFilter</filter-class> 
+      <init-param>
+        <param-name>appUser</param-name>
+        <param-value>jai</param-value>
+      </init-param> 
+  </filter>  
+  <filter-mapping>  
+      <filter-name>MyFilter</filter-name>  
+      <url-pattern>/example1.WelcomeServlet</url-pattern>  
+  </filter-mapping>
+
+
+   </web-app>

@@ -1,0 +1,127 @@
+WelcomeUser.java
+----------------
+package pack2;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
+
+@WebServlet("/WelcomeUser")
+public class WelcomeUser extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+   
+    public WelcomeUser() {
+        super();
+
+    }
+
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+    		 {
+    		
+    		response.setContentType("text/html"); 
+    		    PrintWriter pwriter = response.getWriter(); 
+    		 
+    		    String name=request.getParameter("uname"); 
+    		    pwriter.print("Hello "+name+"!");
+    		    pwriter.print(" Welcome to Beginnersbook.com");
+    		  }
+}
+
+______________________________________________________________________________________________________________________________________________________________________________________________
+
+Validation.java
+---------------
+package pack2;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.RequestDispatcher;
+import java.io.IOException;
+import java.io.PrintWriter;
+
+@WebServlet("/Validation")
+public class Validation extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+    
+    public Validation() {
+        super();
+     
+    }
+
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+    	   {
+    	response.setContentType("text/html");      
+    	       PrintWriter pwriter = response.getWriter();                
+    	       String name=request.getParameter("uname");      
+    	       String pass=request.getParameter("upass");
+    	if(name.equals("Chaitanya") && pass.equals("beginnersbook"))
+    	       {          
+    	          RequestDispatcher dis=request.getRequestDispatcher("/WelcomeUser");          
+    	          dis.forward(request, response);      
+    	       }
+    	else
+    	       {      
+    	          pwriter.print("User name or password is incorrect!");          
+    	          RequestDispatcher dis=request.getRequestDispatcher("index.html");          
+    	          dis.include(request, response);                                
+    	       }
+    	}
+}
+
+______________________________________________________________________________________________________________________________________________________________________________________________
+
+four.html
+---------
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<!-- <form action="Validation" method="post">  -->
+<form action="WelcomeUser" method="post"> 
+  User Name:<input type="text" name="uname"/><br/> 
+  Password:<input type="password" name="upass"/><br/> 
+  <input type="submit" value="SUBMIT"/> 
+</form>
+</body>
+</html>
+
+______________________________________________________________________________________________________________________________________________________________________________________________
+
+web.xml
+-------
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://jakarta.ee/xml/ns/jakartaee" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd" id="WebApp_ID" version="6.0">
+  <display-name>WebApplication</display-name>
+ <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>four.html</welcome-file>
+  </welcome-file-list>
+
+<servlet>
+ <servlet-name>Validation</servlet-name>
+ <servlet-class>example1.Validation</servlet-class>
+ </servlet>
+ <servlet-mapping>
+ <servlet-name>Validation</servlet-name>
+ <url-pattern>/example1.Validation</url-pattern>
+ </servlet-mapping>
+ <servlet>
+ <servlet-name>WelcomeUser</servlet-name>
+ <servlet-class>example1.WelcomeUser</servlet-class>
+ </servlet>
+ <servlet-mapping>
+ <servlet-name>WelcomeUser</servlet-name>
+ <url-pattern>/example1.WelcomeUser</url-pattern>
+ </servlet-mapping>
+
+</web-app>

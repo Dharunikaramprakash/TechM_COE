@@ -1,0 +1,92 @@
+OnServletContext.java
+---------------------
+package pack5;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.ServletContext;
+import java.io.IOException;
+import java.io.PrintWriter;
+
+@WebServlet("/OnServletContext")
+public class OnServletContext extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    public OnServletContext() {
+        super();
+    }
+
+        protected void doPost(HttpServletRequest req,HttpServletResponse res)throws ServletException,IOException
+        {
+        	PrintWriter pw=res.getWriter();
+            res.setContentType("text/html");
+
+            ServletContext context=getServletContext();  
+
+            String s1=context.getInitParameter("n1");
+            String s2=context.getInitParameter("n2");
+
+            pw.println("n1 value is " +s1+ " and n2 is " +s2);
+
+           pw.close();        
+           }
+        }
+
+______________________________________________________________________________________________________________________________________________________________________________________________
+
+third.html
+--------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ServletContext Example</title>
+    <style>
+        body {
+            font-family: Verdana, sans-serif;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <p>Example on ServletContext</p>
+    <form action="onContext" method="post">
+        <input type="submit" value="Click Here">
+    </form>
+</body>
+</html>
+
+______________________________________________________________________________________________________________________________________________________________________________________________
+
+web.xml
+-------
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://jakarta.ee/xml/ns/jakartaee" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd" id="WebApp_ID" version="6.0">
+  <display-name>WebApplication</display-name>
+ <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>six.html</welcome-file>
+  </welcome-file-list>
+  
+<context-param>
+        <param-name> n1 </param-name>
+        <param-value> 47 </param-value>
+    </context-param>
+<context-param>
+        <param-name> n2  </param-name>
+        <param-value> 74 </param-value>
+    </context-param>
+<servlet>
+        <servlet-name>OnServletContext</servlet-name>
+        <servlet-class>example1.OnServletContext</servlet-class>
+    </servlet>
+    <servlet-mapping>
+            <servlet-name>OnServletContext</servlet-name>
+            <url-pattern>/onContext</url-pattern>
+    </servlet-mapping>
+
+</web-app>
