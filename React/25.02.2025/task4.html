@@ -1,0 +1,76 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Check Vowel in String</title>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <div id="root1"></div>
+    <div id="root2"></div>
+
+    <script type="text/babel">
+      function HasVowel(props) {
+        return (
+          <div>
+            <h1>The given string is: "{props.str}"</h1>
+            <h2>It contains at least one vowel.</h2>
+          </div>
+        );
+      }
+
+      function NoVowel(props) {
+        return (
+          <div>
+            <h1>The given string is: "{props.str}"</h1>
+            <h2>It does not contain any vowels.</h2>
+          </div>
+        );
+      }
+
+      function containsVowel(str) {
+        return /[aeiouAEIOU]/.test(str);
+      }
+
+      function CheckVowelIf(props) {
+        const str = props.str;
+        console.log("Using if statement");
+        if (containsVowel(str)) {
+          return <HasVowel str={str} />;
+        } else {
+          return <NoVowel str={str} />;
+        }
+      }
+
+      function CheckVowelTernary(props) {
+        const str = props.str;
+        console.log("Using ternary operator");
+        return containsVowel(str) ? <HasVowel str={str} /> : <NoVowel str={str} />;
+      }
+
+      function CheckVowelAnd(props) {
+        const str = props.str;
+        console.log("Using AND operator");
+        return (
+          <>
+            {containsVowel(str) && <HasVowel str={str} />}
+            {!containsVowel(str) && <NoVowel str={str} />}
+          </>
+        );
+      }
+
+      ReactDOM.createRoot(document.getElementById("root")).render(<CheckVowelIf str="Hello" />);
+      ReactDOM.createRoot(document.getElementById("root1")).render(<CheckVowelTernary str="Sky" />);
+      ReactDOM.createRoot(document.getElementById("root2")).render(<CheckVowelAnd str="Rhythm" />);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,77 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Check Flower Name</title>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <div id="root1"></div>
+    <div id="root2"></div>
+
+    <script type="text/babel">
+      function IsFlower(props) {
+        return (
+          <div>
+            <h1>Input: "{props.name}"</h1>
+            <h2>It's a flower!</h2>
+          </div>
+        );
+      }
+
+      function NotFlower(props) {
+        return (
+          <div>
+            <h1>Input: "{props.name}"</h1>
+            <h2>It's not a flower!</h2>
+          </div>
+        );
+      }
+
+      function isFlower(name) {
+        const flowers = ["Rose", "Jasmine", "Lotus"];
+        return flowers.includes(name);
+      }
+
+      function CheckFlowerIf(props) {
+        const name = props.name;
+        console.log("Using if statement");
+        if (isFlower(name)) {
+          return <IsFlower name={name} />;
+        } else {
+          return <NotFlower name={name} />;
+        }
+      }
+
+      function CheckFlowerTernary(props) {
+        const name = props.name;
+        console.log("Using ternary operator");
+        return isFlower(name) ? <IsFlower name={name} /> : <NotFlower name={name} />;
+      }
+
+      function CheckFlowerAnd(props) {
+        const name = props.name;
+        console.log("Using AND operator");
+        return (
+          <>
+            {isFlower(name) && <IsFlower name={name} />}
+            {!isFlower(name) && <NotFlower name={name} />}
+          </>
+        );
+      }
+
+      ReactDOM.createRoot(document.getElementById("root")).render(<CheckFlowerIf name="Rose" />);
+      ReactDOM.createRoot(document.getElementById("root1")).render(<CheckFlowerTernary name="Sunflower" />);
+      ReactDOM.createRoot(document.getElementById("root2")).render(<CheckFlowerAnd name="Lotus" />);
+    </script>
+  </body>
+</html>

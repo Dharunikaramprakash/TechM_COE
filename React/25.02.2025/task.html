@@ -1,0 +1,54 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+      function Football() {
+          const shoot = () => {
+            alert("Great Shot!");
+          };
+
+          const handleInputChange = (event) => {
+            console.log("User typed:", event.target.value);
+          };
+          const handleMouseOver = () => {
+              alert("You're about to take a shot!");
+            };
+            const onsubmit=()=>{
+              alert("form submitted");
+            };
+
+          return (
+            <div>
+              <button onClick={shoot} >Take the shot!</button>
+              <br />
+              <button onMouseOver={handleMouseOver}>hover</button>
+              <br />
+              <input type="text" onChange={handleInputChange} placeholder="Type something..." />
+              <br />
+              <form onSubmit={onsubmit}><input type="text"    placeholder="Type something..."/>
+              <button type="submit">Submit</button>
+
+          </form>
+            </div>
+          );
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<Football />);
+    </script>
+  </body>
+</html>

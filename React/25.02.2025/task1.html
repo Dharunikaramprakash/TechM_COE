@@ -1,0 +1,85 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div> 
+    <div id="root1"></div>
+    <div id="root2"></div>
+    <script type="text/babel">
+        function Divisible(props){
+            return(
+                <div>
+                    
+                    <h1>the given number is {props.num}</h1>
+                    <h1>It is divisible by 13</h1>
+                </div>
+            );
+        }
+        function NotDivisible(props){
+            return(
+                <div>
+                    <h1>the given number is {props.num}</h1>
+                    <h1>it is not divisible by 13</h1>
+                </div>
+            );
+        }
+        function CheckNumberIf(props){
+            const isNum = props.num;
+     
+            if(isNum%13==0){
+                return (
+                    <div>
+                    <h1>using if</h1>
+                <Divisible num={isNum} />
+                </div>
+            );
+            }
+            return (
+                <div>
+                <h1>using if</h1>  
+            <NotDivisible num={isNum} />
+            </div>
+        );
+        }
+        function CheckNumberTernary(props) {
+            const isNum = props.num;
+             
+            return (
+                <>
+                <h1>using ternary</h1>
+                    { isNum%13==0 ? <Divisible num={isNum}/> : <NotDivisible num={isNum}/> }
+                </>
+            );
+        }
+        function CheckNumberAnd(props) {
+            const isNum = props.num;
+            
+            return (
+                <>
+                <h1>using And</h1>
+                    { isNum%13==0 && <Divisible num={isNum}/> }
+                    { isNum%13!=0 && <NotDivisible num={isNum}/> }
+                </>
+            );
+        }
+        let rt1=document.getElementById('root');
+        ReactDOM.render(<CheckNumberIf num="26" />,rt1);
+        let rt2=document.getElementById('root1');
+        ReactDOM.render(<CheckNumberTernary num="90" />,rt2);
+        let rt3=document.getElementById('root2');
+        ReactDOM.render(<CheckNumberAnd num="65" />,rt3);
+    </script>
+    </body>
+</html>

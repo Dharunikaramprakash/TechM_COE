@@ -1,0 +1,86 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div> 
+    <div id="root1"></div>
+    <div id="root2"></div>
+    <script type="text/jsx">
+        function StrEven(props){
+            return (
+                <div>
+            
+            <h3>the given string is {props.str}</h3>
+            <h3>it is even</h3>
+            </div>
+            );
+        }
+        function StrOdd(props){
+            return(
+                <div>
+            <h3>the given string is {props.str}</h3>
+            <h3>it is odd</h3>
+            </div>
+            );
+        }
+        function CheckStringIf(props){
+            const str1=props.str;
+            
+            if(str1.length%2==0){
+                return (
+                    <div>
+                        <h1>using if</h1>
+                        <StrEven str={str1} />
+                        </div>
+                );
+            }else{
+                return(
+                    <div>
+                        <h1>using if</h1>
+                        <StrOdd str={str1} />
+                        </div>
+                );
+                
+                
+            }
+        }
+        function CheckStringTernary(props){
+            const str1=props.str;
+            
+            return(
+                <>
+                <h1>using ternary operator</h1>
+                {str1.length%2==0 ? <StrEven str={str1} /> : <StrOdd str={str1} />}
+                </>
+            );
+        }
+            function CheckStringAnd(props){
+                const str1=props.str;
+                
+                return(
+                    <>
+                    <h1>using and operator</h1>
+                    {str1.length%2==0 && <StrEven str={str1} />}
+                    {str1.length%2!=0 && <StrOdd str={str1} />}
+                    </>
+                );
+            }
+            let rt1=document.getElementById('root');
+            ReactDOM.render(<CheckStringIf str="Ram" />,rt1);
+            let rt2=document.getElementById('root1');
+            ReactDOM.render(<CheckStringTernary str="Dharunika" />,rt2);
+            let rt3=document.getElementById('root2');
+            ReactDOM.render(<CheckStringAnd str="Sobinath" />,rt3);
+    </script>
