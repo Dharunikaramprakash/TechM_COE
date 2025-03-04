@@ -1,1 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courses - VShine Academy</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<header>
+    <div class="top-bar">
+        <p>Email: <a href="mailto:info@vshineacademy.com">info@vshineacademy.com</a> | 
+           Phone: <a href="tel:+123456789">+91 6382875552</a>
+        </p>
+    </div>
+</header>    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="../index.html" class="logo">VShine Academy</a>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="courses.html" class="active">Courses</a></li>
+                <li><a href="instructors.html">Instructors</a></li>
+                <li><a href="enrollment.html">Enroll</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="header">
+        <h1>Explore Our Courses</h1>
+        <p>Learn from industry experts in various fields</p>
+    </header>
+
+    <!-- Courses Section -->
+    <section class="courses">
+        <div class="course-card">
+            <img src="../assets/images/bd.jpg" alt="Web Development">
+            <h3>Big Data</h3>
+            <p><strong>Instructor:</strong> Ajith Lal</p>
+            <p><strong>Duration:</strong> 12 Weeks</p>
+            <p><strong>Rating:</strong> ⭐⭐⭐⭐☆ (4.5)</p>
+            <button class="enroll-btn" onclick="enrollCourse('Full-Stack Web Development')">Enroll Now</button>
+        </div>
+
+        <div class="course-card">
+            <img src="../assets/images/machinelearning.jpg" alt="Machine Learning">
+            <h3>Machine Learning & AI</h3>
+            <p><strong>Instructor:</strong> Zehra Gunes</p>
+            <p><strong>Duration:</strong> 10 Weeks</p>
+            <p><strong>Rating:</strong> ⭐⭐⭐⭐⭐ (5.0)</p>
+            <button class="enroll-btn" onclick="enrollCourse('Machine Learning & AI')">Enroll Now</button>
+        </div>
+
+        <div class="course-card">
+            <img src="../assets/images/cybersecurity.jpg" alt="Cybersecurity">
+            <h3>Cybersecurity & Ethical Hacking</h3>
+            <p><strong>Instructor:</strong> Tiji Raju</p>
+            <p><strong>Duration:</strong> 8 Weeks</p>
+            <p><strong>Rating:</strong> ⭐⭐⭐⭐☆ (4.7)</p>
+            <button class="enroll-btn" onclick="enrollCourse('Cybersecurity & Ethical Hacking')">Enroll Now</button>
+        </div>
+
+        <div class="course-card">
+            <img src="../assets/images/cloudcomputing.jpg" alt="Cloud Computing">
+            <h3>Cloud Computing & DevOps</h3>
+            <p><strong>Instructor:</strong> Preeti Singh</p>
+            <p><strong>Duration:</strong> 14 Weeks</p>
+            <p><strong>Rating:</strong> ⭐⭐⭐⭐⭐ (4.9)</p>
+            <button class="enroll-btn" onclick="enrollCourse('Cloud Computing & DevOps')">Enroll Now</button>
+        </div>
+
+        <div class="course-card">
+            <img src="../assets/images/fs.png" alt="Software Engineering">
+            <h3>Full Stack</h3>
+            <p><strong>Instructor:</strong> Priyanka</p>
+            <p><strong>Duration:</strong> 16 Weeks</p>
+            <p><strong>Rating:</strong> ⭐⭐⭐⭐⭐ (5.0)</p>
+            <button class="enroll-btn" onclick="enrollCourse('Advanced Software Engineering')">Enroll Now</button>
+        </div>
+    </section>
+
+    <!-- Back Button -->
+    <button class="go-back" onclick="goBack()">Go Back</button>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 VShine Academy. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        function goBack() {
+            window.history.back(); // Navigate to the previous page
+        }
+
+        function enrollCourse(courseName) {
+            // Redirect to enrollment page with course name in the URL
+            window.location.href = 'enrollment.html?course=' + encodeURIComponent(courseName);
+        }
+    </script>
+
+</body>
+</html>
 
