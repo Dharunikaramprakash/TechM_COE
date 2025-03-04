@@ -1,1 +1,11 @@
 
+{
+    "courses": [
+      { "id": "web-dev", "name": "Full Stack Web Development" },
+      { "id": "data-science", "name": "Data Science with Python" },
+      { "id": "cybersecurity", "name": "Cybersecurity Essentials" },
+      { "id": "cloud-computing", "name": "Cloud Computing with AWS" }
+    ] 
+    
+  }
+  
