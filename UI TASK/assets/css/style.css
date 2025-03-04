@@ -1,1 +1,487 @@
+/* General Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    text-align: center;
+}
+
+/* Header */
+header {
+    background-color: #080909;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+}
+.top-header {
+    background-color: black; /* Matches navbar */
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    padding: 10px 0;
+    text-align: center;
+}
+.navbar {
+    margin-bottom: 0;
+    background-color: black;
+    padding: 10px 0;
+}
+nav {
+    background-color: black;
+    padding-bottom: 0%;
+}
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    background: #5ab300;
+    padding: 10px;
+    margin-bottom: 0%;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Hero Section */
+.hero {
+    background: #090909;
+    color: white;
+    padding: 50px 20px;
+    text-align: center;
+    margin-top: 0;
+}
+
+.hero h2 {
+    font-size: 28px;
+}
+
+.hero p {
+    font-size: 18px;
+}
+
+.hero .btn {
+    background: white;
+    color: #0a0b0b;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.hero .btn:hover {
+    background: #0056b3;
+    color: white;
+}
+
+/* Carousel */
+.carousel {
+    position: relative;
+    width: 80%;
+    max-width: 1100px;
+    margin: 30px auto;
+    overflow: hidden;
+}
+
+
+.carousel .slides {
+    display: flex;
+    gap: 20px; /* Adds space between slides */
+    transition: transform 0.5s ease-in-out;
+    white-space: nowrap; /* Prevents slides from wrapping */
+}
+
+.slide {
+    flex: 0 0 calc(100% / 3 - 20px); /* Adjust for 3 slides per view */
+    text-align: center;
+}
+
+
+.slide img {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.slide h3 {
+    margin-top: 10px;
+    font-size: 20px;
+    color: #0a0a0a;
+}
+
+/* Carousel Buttons */
+button.prev, button.next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 20px;
+    z-index: 10; /* Ensures buttons are above the slides */
+}
+
+button.prev { left: -10px; }  /* Adjust left button placement */
+button.next { right: -10px; } /* Adjust right button placement */
+
+button.prev:hover, button.next:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+
+/* Course Page Styling */
+.course-search {
+    text-align: center;
+    margin: 20px auto;
+}
+
+.course-search input {
+    width: 50%;
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #007BFF;
+    border-radius: 5px;
+    outline: none;
+}
+
+#courses-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Course Cards */
+.course-card {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 300px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.course-card:hover {
+    transform: translateY(-5px);
+}
+
+.course-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.course-card h3 {
+    margin-top: 10px;
+    font-size: 22px;
+    color: #007BFF;
+}
+
+.course-card p {
+    font-size: 14px;
+    color: #555;
+    margin: 10px 0;
+}
+
+.course-card .btn {
+    display: inline-block;
+    background: #007BFF;
+    color: white;
+    padding: 8px 12px;
+    margin-top: 10px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.course-card .btn:hover {
+    background: #0056b3;
+}
+
+/* Enrollment Form */
+.enrollment-container {
+    width: 50%;
+    margin: 40px auto;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.enrollment-container h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #007BFF;
+}
+
+label {
+    font-weight: bold;
+    display: block;
+    margin-top: 15px;
+    text-align: left;
+    font-size: 16px;
+}
+
+input, select {
+    width: 100%;
+    padding: 12px;
+    margin-top: 5px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+input:focus, select:focus {
+    border-color: #007BFF;
+    outline: none;
+}
+
+.btn {
+    display: inline-block;
+    background: #007BFF;
+    color: white;
+    padding: 12px 20px;
+    margin-top: 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #0056b3;
+}
+
+/* Instructors Page */
+.instructors-container {
+    width: 80%;
+    margin: 40px auto;
+    text-align: center;
+}
+
+.instructors-container h2 {
+    font-size: 28px;
+    color: #007BFF;
+}
+
+.instructors-container p {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 30px;
+}
+#instructors-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    justify-content: center;
+    width: 90%;
+    margin: 0 auto;
+}
+
+/* Instructor Card */
+.instructor-card {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s;
+}
+
+
+
+
+.instructor-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.instructor-card img {
+    width: 100%;
+    height: auto;
+    max-height: 200px; /* Limits image height */
+    object-fit: contain; /* Ensures the full image is visible */
+    border-radius: 10px 10px 0 0;
+}
+
+
+.instructor-card h3 {
+    margin-top: 10px;
+    font-size: 22px;
+    color: #007BFF;
+}
+
+.instructor-card p {
+    font-size: 14px;
+    color: #555;
+    padding: 10px;
+}
+
+.instructor-card .btn {
+    display: inline-block;
+    background: #007BFF;
+    color: white;
+    padding: 8px 12px;
+    margin-top: 10px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.instructor-card .btn:hover {
+    background: #0056b3;
+}
+footer {
+    background-color: grey; /* Set background to grey */
+    color: white; /* Text color */
+    text-align: center; /* Center-align text */
+    padding: 5px; /* Add some padding */
+    font-size: 16px; /* Adjust text size */
+}
+.instructors {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.instructor-card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+}
+
+.instructor-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+@media (max-width: 1024px) {
+    .instructors {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns for tablets */
+    }
+}
+
+@media (max-width: 768px) {
+    .instructors {
+        grid-template-columns: repeat(1, 1fr); /* 1 column for mobile */
+    }
+}
+.go-back {
+    display: block;
+    width: fit-content;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+}
+
+.go-back:hover {
+    background: #0056b3;
+}
+/* Courses Section */
+.courses {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 40px;
+    justify-items: center;
+    
+}
+
+/* Course Card */
+.course-card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 350px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.course-card img {
+    width: 100%;
+    height: 100px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.course-card h3 {
+    color: #333;
+    margin: 15px 0 10px;
+}
+
+.course-card p {
+    color: #555;
+    font-size: 14px;
+    margin: 5px 0;
+}
+
+/* Enroll Button */
+.enroll-btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    background: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.enroll-btn:hover {
+    background: #0056b3;
+}
+
+/* Back Button */
+.go-back {
+    display: block;
+    width: fit-content;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background: rgb(29, 122, 208);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+}
+
+.go-back:hover {
+    background: darkgray;
+}
+
+/* Footer */
 
