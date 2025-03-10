@@ -1,0 +1,94 @@
+body {
+  background: url("./assets/bg.jpg") no-repeat center center fixed;
+  background-size: cover;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  background: transparent !important;
+  box-shadow: none;
+}
+
+h2 {
+  color: white; /* Adjust text color for better visibility */
+}
+
+/* Make the event finder container full width */
+/* Full-width Event Finder Container */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Flexbox Layout */
+.main-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+/* Left Section (Finder + Filters) */
+.left-section {
+  flex: 0 0 300px; /* Fixed width */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+/* Event List */
+.event-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Centers items */
+  gap: 20px;
+  max-width: 1200px;
+  margin-left: 100px;
+}
+
+
+
+
+/* Event Cards */
+.event-card {
+  background: white;
+  padding: 15px;
+  flex: 1 1 calc(33.333% - 20px);
+  border-radius: 8px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  min-width: 250px;
+  max-width: 300px;
+  flex: 1;
+}
+
+/* Search Input & Dropdown */
+.search-container {
+  width: 100%;
+}
+
+.search-container input,
+.search-container select {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .main-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .left-section {
+    width: 100%;
+  }
+
+  
+}
