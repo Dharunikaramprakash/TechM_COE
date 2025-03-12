@@ -1,0 +1,28 @@
+<section class="instructors-container">
+    <header class="header">
+      <h1>Meet Our Instructors</h1>
+      <p>Learn from industry-leading experts</p>
+    </header>
+  
+    <section class="instructors">
+      <div class="instructor-card" *ngFor="let instructor of instructors">
+        <img [src]="instructor.image" [alt]="instructor.name">
+        <h3>{{ instructor.name }}</h3>
+        <p class="title">{{ instructor.title }}</p>
+        <p>{{ instructor.description }}</p>
+  
+        <p *ngIf="instructor.courses.length">
+          <strong>Courses:</strong> {{ instructor.courses.join(', ') }}
+        </p>
+  
+        <p *ngIf="instructor.rating !== null">
+          <strong>Rating:</strong> 
+         
+          {{ instructor.rating }}
+        </p>
+      </div>
+    </section>
+  
+    <button class="go-back" (click)="goBack()">Go Back</button>
+  </section>
+  

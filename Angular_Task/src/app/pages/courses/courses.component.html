@@ -1,0 +1,19 @@
+<div class="courses-container">
+  <h2>Explore Our Courses</h2>
+  <p>Learn from industry experts in various fields</p>
+
+  
+  <label for="duration">Minimum Duration (Weeks): </label>
+  <input type="number" id="duration" [(ngModel)]="minDuration" placeholder="Enter weeks" class="search-box"/>
+
+  <div class="course-list">
+    <div class="course-card" *ngFor="let course of courses | filter:minDuration">
+      <img [src]="course.image" [alt]="course.name">
+      <h3>{{ course.name }}</h3>
+      <p><strong>Instructor:</strong> {{ course.instructor }}</p>
+      <p><strong>Duration:</strong> {{ course.duration }} Weeks</p>
+      <p><strong>Rating:</strong> {{ course.rating }}</p>
+      <button [routerLink]="['/enrollment']" [queryParams]="{ course: course.name }">Enroll Now</button>
+    </div>
+  </div>
+</div>

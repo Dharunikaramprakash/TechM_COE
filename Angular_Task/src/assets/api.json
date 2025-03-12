@@ -1,0 +1,52 @@
+[
+  {
+    "name": "Big Data",
+    "instructor": "Ajith Lal",
+    "duration": 12,
+    "rating": 4.5,
+    "image": "assets/images/bd.jpg"
+  },
+  {
+    "name": "Machine Learning & AI",
+    "instructor": "Zehra Gunes",
+    "duration": 10,
+    "rating": 5.0,
+    "image": "assets/images/machinelearning.jpg"
+  },
+  {
+    "name": "Cybersecurity & Ethical Hacking",
+    "instructor": "Tiji Raju",
+    "duration": 8,
+    "rating": 4.7,
+    "image": "assets/images/cybersecurity.jpg"
+  },
+  {
+    "name": "Cloud Computing & DevOps",
+    "instructor": "Preeti Singh",
+    "duration": 14,
+    "rating": 4.9,
+    "image": "assets/images/cloudcomputing.jpg"
+  },
+  {
+    "name": "Full Stack Development",
+    "instructor": "Priyanka",
+    "duration": 16,
+    "rating": 5.0,
+    "image": "assets/images/fs.png"
+  },
+  {
+    "name": "Python for Data Science",
+    "instructor": "Ajith Lal",
+    "duration": 6,
+    "rating": 4.6,
+    "image": "assets/images/py.jpg"
+  },
+ 
+  {
+    "name": "Java Programming",
+    "instructor": "Anita Desai",
+    "duration": 9,
+    "rating": 4.7,
+    "image": "assets/images/java.jpg"
+  }
+]

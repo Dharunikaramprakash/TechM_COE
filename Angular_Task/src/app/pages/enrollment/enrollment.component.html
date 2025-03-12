@@ -1,0 +1,28 @@
+<section class="enrollment-container">
+  <form *ngIf="!formSubmitted" (ngSubmit)="onSubmit()">
+    <h2>Fill in Your Details</h2>
+
+    <label for="name"><b>Full Name</b></label>
+    <input type="text" id="name" [(ngModel)]="enrollData.name" name="name" placeholder="Enter your full name" required />
+
+    <label for="email"><b>Email Address</b></label>
+    <input type="email" id="email" [(ngModel)]="enrollData.email" name="email" placeholder="Enter your email" required />
+
+    <label for="phone"><b>Phone Number</b></label>
+    <input type="tel" id="phone" [(ngModel)]="enrollData.phone" name="phone" placeholder="Enter your phone number" required />
+
+    <label for="course-select"><b>Select a Course</b></label>
+    <select id="course-select" [(ngModel)]="enrollData.course" name="course" required>
+      <option *ngFor="let course of courses" [value]="course">{{ course }}</option>
+    </select>
+
+    <button type="submit" class="btn">Enroll Now</button>
+  </form>
+
+  
+  <div *ngIf="formSubmitted" class="success-message">
+     Your form has been submitted successfully! Our team will contact you shortly.
+  </div>
+</section>
+
+<button class="go-back" (click)="goBack()">Go Back</button>
